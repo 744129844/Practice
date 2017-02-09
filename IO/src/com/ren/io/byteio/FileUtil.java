@@ -42,6 +42,10 @@ public class FileUtil {
 	public static void copyDir(File src,File dest) throws IOException{
 		if (src.isDirectory()) {
 			dest = new File(dest,src.getName());
+			if(dest.getAbsolutePath().contains(src.getAbsolutePath())){
+				System.out.println("父目录不能拷贝到子目录!");
+				return;
+			}
 		}
 		copyDirDetail(src, dest);
 	}
